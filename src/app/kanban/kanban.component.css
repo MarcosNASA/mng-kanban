@@ -1,0 +1,54 @@
+:host(mng-kanban) {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: auto;
+}
+
+:host(mng-kanban)::-webkit-scrollbar {
+  width: 10px;
+}
+
+:host(mng-kanban)::-webkit-scrollbar-track {
+  background-color: var(--color--clouds);
+}
+
+:host(mng-kanban)::-webkit-scrollbar-thumb {
+  background-color: var(--color--grey);
+}
+
+:host(mng-kanban)::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color--secondary);
+}
+
+.mng-kanban__title {
+  padding: 20px;
+  text-align: center;
+}
+
+.mng-kanban__column-placeholder {
+  min-width: 300px;
+  padding: 10px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border: none;
+  background-color: rgba(100, 100, 100, 0.1);
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+}
+
+.mng-kanban__column-placeholder > svg {
+  margin-right: 10px;
+}
+
+.overflow-padding-fix {
+  align-self: flex-start;
+  padding-right: 20px;
+}

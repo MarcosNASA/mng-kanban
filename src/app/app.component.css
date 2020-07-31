@@ -1,0 +1,16 @@
+.app {
+    height: 92vh;
+}
+
+.app__header {
+    height: 8vh;
+    background-color: var(--color--clouds);
+    box-shadow: 0px 4px 10px rgba(110, 110, 110, 0.1);
+}
+
+.app__title {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
