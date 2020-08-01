@@ -4,4 +4,4 @@ Simple kanban implementation in Angular to exemplify an Angular project for my t
 
 ## Demo
 
-Chipzset[https://chipzset.firebaseapp.com/]!
+[Chipzset](https://chipzset.firebaseapp.com/)!
