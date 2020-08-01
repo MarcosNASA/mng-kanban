@@ -1,10 +1,12 @@
 <h3 class="mng-chip__title"
     contenteditable="true"
+    aria-label="Update chip name"
     (blur)="updateChipName($event)">
   {{ name }}
 </h3>
 <p class="mng-chip__description"
    contenteditable="true"
+   aria-label="Update chip description"
    (blur)="updateChipDescription($event)">
   {{ description }}
 </p>

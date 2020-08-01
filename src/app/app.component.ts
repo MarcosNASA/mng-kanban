@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
         {
           id: 5,
           name: 'Portfolio',
-          description: 'https://pages.github.com/marcos-nasa-g',
+          description: 'Not deployed yet',
         },
       ],
     },
