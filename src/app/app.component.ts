@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
         {
           id: 2,
           name: 'Kanban project',
-          description: 'So I can explain Angular concepts',
+          description: 'So I can explain Angular concepts to the members of the tribunal 🤓',
         },
       ],
     },
@@ -53,36 +53,6 @@ export class AppComponent implements OnInit {
         },
         {
           id: 5,
-          name: 'Portfolio',
-          description: 'https://pages.github.com/marcos-nasa-g',
-        },
-        {
-          id: 6,
-          name: 'Procastinating',
-          description: 'Even thoug I was not',
-        },
-        {
-          id: 7,
-          name: 'JS Scope Visualizer',
-          description: 'https://js-scope-visualizer.firebaseapp.com/',
-        },
-        {
-          id: 8,
-          name: 'Portfolio',
-          description: 'https://pages.github.com/marcos-nasa-g',
-        },
-        {
-          id: 9,
-          name: 'Procastinating',
-          description: 'Even thoug I was not',
-        },
-        {
-          id: 10,
-          name: 'JS Scope Visualizer',
-          description: 'https://js-scope-visualizer.firebaseapp.com/',
-        },
-        {
-          id: 11,
           name: 'Portfolio',
           description: 'https://pages.github.com/marcos-nasa-g',
         },
