@@ -1,7 +1,7 @@
 import { Chip } from './Chip';
 
 export class Column {
-  id: number;
+  id: string | number;
   name: string;
   chips: Chip[];
 

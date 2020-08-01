@@ -53,10 +53,3 @@
   align-self: flex-start;
   padding-right: 20px;
 }
-
-.mng-column__drag {
-  width: 24px;
-  height: 24px;
-  margin-right: 5px;
-  cursor: grab;
-}

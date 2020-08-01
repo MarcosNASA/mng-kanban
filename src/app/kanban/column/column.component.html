@@ -5,17 +5,29 @@
     {{ name }}
   </h2>
   <div class="mng-column__actions">
-    <ng-content></ng-content>
-    <button class="
-       mng-column__delete"
-       aria-label="Delete column"
-       (click)="deleteColumn()">
-    <svg xmlns="http://www.w3.org/2000/svg"
-         height="24"
-         viewBox="0 0 24 24"
-         width="24"
-         fill="#464A5B">
-      <path d="M19 13H5v-2h14v2z" /></svg>
+    <button class="mng-column__move-column" (click)="moveColumn('left')">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           height="24"
+           viewBox="0 0 24 24"
+           width="24">
+        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" /></svg>
+    </button>
+    <button class="mng-column__move-column" (click)="moveColumn('right')">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           height="24"
+           viewBox="0 0 24 24"
+           width="24">
+        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" /></svg>
+    </button>
+    <button class="mng-column__delete"
+            aria-label="Delete column"
+            (click)="deleteColumn()">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           height="24"
+           viewBox="0 0 24 24"
+           width="24"
+           fill="#464A5B">
+        <path d="M19 13H5v-2h14v2z" /></svg>
     </button>
   </div>
 </header>
@@ -49,5 +61,5 @@
        viewBox="0 0 24 24"
        width="24">
     <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>
-  New item
+  New chip
 </button>

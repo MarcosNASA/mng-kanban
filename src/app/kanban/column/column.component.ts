@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Chip } from '../../core/models/Chip';
 
+import { v4 as uuid } from 'uuid';
+
 @Component({
   selector: 'mng-column',
   templateUrl: './column.component.html',
@@ -14,7 +16,10 @@ export class ColumnComponent implements OnInit {
   @Output() chipsChange: EventEmitter<Chip[]> = new EventEmitter<Chip[]>();
 
   @Output() onUpdateState: EventEmitter<void> = new EventEmitter<void>();
-  @Output() onDeleteColumn: EventEmitter<Number> = new EventEmitter<Number>();
+  @Output() onColumnMove: EventEmitter<[number, number]> = new EventEmitter<
+    [number, number]
+  >();
+  @Output() onColumnDeletion: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() {}
 
@@ -41,18 +46,31 @@ export class ColumnComponent implements OnInit {
   }
 
   deleteColumn(): void {
-    this.onDeleteColumn.emit(this.id);
+    this.onColumnDeletion.emit(this.id);
+  }
+
+  moveColumn(type: string) {
+    let typeFactor:number = 0;
+
+    switch(type) {
+      case 'left':
+        typeFactor = -1;
+        break;
+      case 'right':
+        typeFactor = +1;
+        break;
+      default:
+        break;
+    }
+
+    this.onColumnMove.emit([this.id, typeFactor]);
   }
 
   newChip(): void {
     const newChips = [...this.chips];
+
     const newChip = {
-      id:
-        !newChips[newChips.length - 1] ||
-        (newChips[newChips.length - 1] &&
-          newChips[newChips.length - 1].id === 0)
-          ? ++newChips[newChips.length - 1].id
-          : 0,
+      id: uuid(),
       name: 'New chip',
       description: 'A brand-new chip!',
     };

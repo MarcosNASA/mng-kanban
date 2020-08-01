@@ -8,7 +8,8 @@ import {
 } from '@angular/core';
 
 import { Column } from '../core/models/Column';
-import { Chip } from '../core/models/Chip';
+
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'mng-kanban',
@@ -22,6 +23,7 @@ export class KanbanComponent implements OnInit {
   @Output() columnsChange: EventEmitter<Column[]> = new EventEmitter<
     Column[]
   >();
+
   @Output() onUpdateState: EventEmitter<Column[]> = new EventEmitter<
     Column[]
   >();
@@ -34,12 +36,7 @@ export class KanbanComponent implements OnInit {
     const newColumns: Column[] = [...this.columns];
 
     const newColumn = {
-      id:
-        !newColumns[newColumns.length - 1] ||
-        (newColumns[newColumns.length - 1] &&
-          newColumns[newColumns.length - 1].id === 0)
-          ? ++newColumns[newColumns.length - 1].id
-          : 0,
+      id: uuid(),
       name: 'New column',
       chips: [],
     };
@@ -50,6 +47,37 @@ export class KanbanComponent implements OnInit {
 
     this.columnsChange.emit(this.columns);
     this.updateState();
+  }
+
+  moveColumn([columnId, type]) {
+    const newColumns: Column[] = [...this.columns];
+
+    const movedColumn = newColumns.find(matchId);
+    const movedColumnIndex = newColumns.findIndex(matchId);
+
+    if (!movedColumn) {
+      return;
+    }
+
+    const newIndex = movedColumnIndex + type;
+
+    if (newIndex < 0 || newIndex > newColumns.length - 1) {
+      return;
+    }
+
+    const newMovedColumn = Object.assign({}, movedColumn);
+
+    newColumns.splice(movedColumnIndex, 1);
+    newColumns.splice(movedColumnIndex + type, 0, newMovedColumn);
+
+    this.columns = newColumns;
+
+    this.columnsChange.emit(this.columns);
+    this.updateState();
+
+    function matchId(column) {
+      return column.id === columnId;
+    }
   }
 
   deleteColumn(columnId: number): void {

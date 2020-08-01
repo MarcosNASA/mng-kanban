@@ -9,7 +9,8 @@
 }
 
 :root {
-  --color--grey: #ccc;
+  --color--dark-grey: #bcbbbe;
+  --color--grey: #CCC;
   --color--silver: #ECF0f1;
   --color--clouds: #F6F8FA;
 
