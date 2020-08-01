@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
         {
           id: 0,
           name: 'Find a job',
-          description: '90K a year at least',
+          description: '90K a year at least lul',
         },
       ],
     },
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
       chips: [
         {
           id: 3,
-          name: 'Procastinating',
+          name: 'Procastinate',
           description: 'Even thoug I was not',
         },
         {
