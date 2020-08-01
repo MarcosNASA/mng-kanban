@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
         {
           id: 0,
           name: 'Find a job',
-          description: '90K a year at-least',
+          description: '90K a year at least',
         },
       ],
     },
@@ -101,9 +101,8 @@ export class AppComponent implements OnInit {
       this.defaultKanbanData;
   }
 
-  updateState(newColumns: Column[]): void {
-    console.log(newColumns);
-    this.saveColumns(newColumns);
+  updateState(): void {
+    this.saveColumns(this.kanbanData);
   }
 
   saveColumns(kanbanData: Column[]): void {

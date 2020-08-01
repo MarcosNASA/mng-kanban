@@ -33,6 +33,10 @@
 }
 
 .mng-column__title {
+  font-size: 18px;
+}
+
+.mng-column__actions {
 }
 
 .mng-column__delete {
@@ -40,6 +44,7 @@
   background-color: var(--color--silver);
   width: 24px;
   height: 24px;
+  margin-left: 5px;
   cursor: pointer;
 }
 
@@ -60,4 +65,12 @@
 
 .mng-chip__placeholder > svg {
   margin-right: 10px;
+}
+
+.mng-chip__drag {
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  width: 24px;
+  height: 24px;
+  cursor: grab;
 }

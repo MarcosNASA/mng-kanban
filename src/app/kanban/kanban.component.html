@@ -1,15 +1,30 @@
-<ng-container cdkDropListGroup
-              class="columns">
-  <mng-column cdkDropList
-              *ngFor="let column of columns"
-              [cdkDropListData]="column"
+<ng-container cdkDropListGroup>
+  <mng-column *ngFor="let column of columns"
               [id]="column.id"
               [(name)]="column.name"
               [(chips)]="column.chips"
-              (onChange)="updateState()"></mng-column>
+              (onUpdateState)="updateState()"
+              (onDeleteColumn)="deleteColumn($event)"
+              [cdkDropListData]="column"
+              (cdkDropListDropped)="handleChipDrop($event)"
+              cdkDropList
+              >
+    <i class="mng-column__drag"
+       aria-label="Drag column"
+       >
+      <svg xmlns="http://www.w3.org/2000/svg"
+           height="24"
+           viewBox="0 0 24 24"
+           width="24">
+        <path
+              d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+      </svg>
+    </i>
+  </mng-column>
 </ng-container>
 <div class="overflow-padding-fix">
   <button class="mng-kanban__column-placeholder"
+          aria-label="New column"
           (click)="newColumn()">
     <svg xmlns="http://www.w3.org/2000/svg"
          height="24"

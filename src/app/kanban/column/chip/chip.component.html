@@ -1,4 +1,15 @@
+<h3 class="mng-chip__title"
+    contenteditable="true"
+    (blur)="updateChipName($event)">
+  {{ name }}
+</h3>
+<p class="mng-chip__description"
+   contenteditable="true"
+   (blur)="updateChipDescription($event)">
+  {{ description }}
+</p>
 <button class="mng-chip__delete"
+        aria-label="Delete chip"
         (click)="deleteChip()">
   <svg xmlns="http://www.w3.org/2000/svg"
        height="24"
@@ -7,11 +18,4 @@
        fill="#464A5B">
     <path d="M19 13H5v-2h14v2z" /></svg>
 </button>
-<h5 contenteditable="true"
-    class="mng-chip__title">
-  {{ name }}
-</h5>
-<p contenteditable="true"
-   class="mng-chip__description">
-  {{ description }}
-</p>
+<ng-content></ng-content>

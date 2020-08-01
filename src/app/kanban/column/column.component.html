@@ -1,27 +1,48 @@
-<header class="mng-column__header"
-        (click)="deleteColumn()">
-  <h3 class="mng-column__title"
+<header class="mng-column__header">
+  <h2 class="mng-column__title"
       contenteditable="true"
-      (blur)="updateColumnTitle($event)">
+      (blur)="updateColumnName($event)">
     {{ name }}
-  </h3>
-  <button class="mng-column__delete">
+  </h2>
+  <div class="mng-column__actions">
+    <ng-content></ng-content>
+    <button class="
+       mng-column__delete"
+       aria-label="Delete column"
+       (click)="deleteColumn()">
     <svg xmlns="http://www.w3.org/2000/svg"
          height="24"
          viewBox="0 0 24 24"
          width="24"
          fill="#464A5B">
       <path d="M19 13H5v-2h14v2z" /></svg>
-  </button>
+    </button>
+  </div>
 </header>
 
-<ng-container *ngFor="let chip of chips">
-  <mng-chip cdkDrag
-            [cdkDragData]="chip"
-            [name]="chip.name"
-            [description]="chip.description"></mng-chip>
-</ng-container>
+<mng-chip *ngFor="let chip of chips"
+          [cdkDragData]="chip"
+          [id]="chip.id"
+          [(name)]="chip.name"
+          [(description)]="chip.description"
+          (onDeleteChip)="deleteChip($event)"
+          (onUpdateState)="updateState()"
+          cdkDrag>
+  <i class="mng-chip__drag"
+     aria-label="Drag chip"
+     cdkDragHandle>
+    <svg xmlns="http://www.w3.org/2000/svg"
+         height="24"
+         viewBox="0 0 24 24"
+         width="24">
+      <path
+            d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+    </svg>
+  </i>
+</mng-chip>
+
 <button class="mng-chip__placeholder"
+        aria-label="New chip"
         (click)="newChip()">
   <svg xmlns="http://www.w3.org/2000/svg"
        height="24"
