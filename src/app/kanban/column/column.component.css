@@ -43,6 +43,10 @@
 }
 
 .mng-column__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .mng-column__move-column {

@@ -5,29 +5,44 @@
     {{ name }}
   </h2>
   <div class="mng-column__actions">
-    <button class="mng-column__move-column" (click)="moveColumn('left')">
+    <button class="mng-column__move-column"
+            (click)="moveColumn('left')">
       <svg xmlns="http://www.w3.org/2000/svg"
            height="24"
            viewBox="0 0 24 24"
            width="24">
         <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" /></svg>
     </button>
-    <button class="mng-column__move-column" (click)="moveColumn('right')">
+    <button class="mng-column__move-column"
+            (click)="moveColumn('right')">
       <svg xmlns="http://www.w3.org/2000/svg"
            height="24"
            viewBox="0 0 24 24"
            width="24">
         <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" /></svg>
     </button>
-    <button class="mng-column__delete"
+    <button #deleteColumnButton
+            class="mng-column__delete"
             aria-label="Delete column"
             (click)="deleteColumn()">
-      <svg xmlns="http://www.w3.org/2000/svg"
+      <svg *ngIf="!delete"
+           style="pointer-events: none;"
+           xmlns="http://www.w3.org/2000/svg"
            height="24"
            viewBox="0 0 24 24"
            width="24"
            fill="#464A5B">
-        <path d="M19 13H5v-2h14v2z" /></svg>
+        <path d="M19 13H5v-2h14v2z" />
+      </svg>
+      <svg *ngIf="delete"
+           style="pointer-events: none;"
+           xmlns="http://www.w3.org/2000/svg"
+           height="24"
+           viewBox="0 0 24 24"
+           width="24">
+        <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+      </svg>
     </button>
   </div>
 </header>

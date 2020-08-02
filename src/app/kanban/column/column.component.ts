@@ -1,4 +1,13 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  HostListener,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { Chip } from '../../core/models/Chip';
 
 import { v4 as uuid } from 'uuid';
@@ -20,6 +29,10 @@ export class ColumnComponent implements OnInit {
     [number, number]
   >();
   @Output() onColumnDeletion: EventEmitter<number> = new EventEmitter<number>();
+
+  @ViewChild('deleteColumnButton') deleteColumnButton: ElementRef;
+
+  delete: boolean = false;
 
   constructor() {}
 
@@ -46,13 +59,17 @@ export class ColumnComponent implements OnInit {
   }
 
   deleteColumn(): void {
+    if (!this.delete) {
+      return;
+    }
+
     this.onColumnDeletion.emit(this.id);
   }
 
   moveColumn(type: string) {
-    let typeFactor:number = 0;
+    let typeFactor: number = 0;
 
-    switch(type) {
+    switch (type) {
       case 'left':
         typeFactor = -1;
         break;
@@ -100,5 +117,16 @@ export class ColumnComponent implements OnInit {
 
   updateState() {
     this.onUpdateState.emit();
+  }
+
+  @HostListener('document:click', ['$event'])
+  disableDeletion({ target }) {
+    const { nativeElement } = this.deleteColumnButton;
+
+    if (nativeElement === target) {
+      this.delete = true;
+    } else {
+      this.delete = false;
+    }
   }
 }

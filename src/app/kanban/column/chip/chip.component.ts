@@ -1,4 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  HostListener,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 
 @Component({
   selector: 'mng-chip',
@@ -10,16 +19,26 @@ export class ChipComponent implements OnInit {
   @Input() name: string;
   @Output() nameChange: EventEmitter<string> = new EventEmitter<string>();
   @Input() description: string;
-  @Output() descriptionChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() descriptionChange: EventEmitter<string> = new EventEmitter<
+    string
+  >();
 
   @Output() onDeleteChip: EventEmitter<number> = new EventEmitter<number>();
   @Output() onUpdateState: EventEmitter<void> = new EventEmitter<void>();
+
+  @ViewChild('deleteChipButton') deleteChipButton: ElementRef;
+
+  delete: boolean = false;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   deleteChip(): void {
+    if(!this.delete) {
+      return;
+    }
+
     this.onDeleteChip.emit(this.id);
   }
 
@@ -61,5 +80,16 @@ export class ChipComponent implements OnInit {
 
     this.descriptionChange.emit(this.description);
     this.onUpdateState.emit();
+  }
+
+  @HostListener('document:click', ['$event'])
+  disableDeletion({ target }) {
+    const { nativeElement } = this.deleteChipButton;
+
+    if (nativeElement === target) {
+      this.delete = true;
+    } else {
+      this.delete = false;
+    }
   }
 }
