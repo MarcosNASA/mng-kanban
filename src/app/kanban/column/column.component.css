@@ -81,6 +81,18 @@
 }
 
 .mng-chip__placeholder {
+  padding: 40px;
+  margin: 20px 20px 0px 20px;
+  border-radius: 2px;
+  background-color: rgba(100, 100, 100, 0.1);
+  box-shadow: 4px 4px 8px rgba(100, 100, 100, 0.1);
+}
+
+.mng-chip__placeholder:hover {
+  background-color: var(--color--dark-grey);
+}
+
+.mng-column__new-chip {
   padding: 10px;
   margin: 20px 20px 0px 20px;
   border-radius: 2px;
@@ -96,7 +108,7 @@
   transition: background 0.3s ease-in-out;
 }
 
-.mng-chip__placeholder:hover {
+.mng-column__new-chip:hover {
   background-color: var(--color--dark-grey);
 }
 
