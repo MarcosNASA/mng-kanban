@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Kanban } from './core/models/Kanban';
 import { Column } from './core/models/Column';
 
 @Component({
